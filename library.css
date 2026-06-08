@@ -1,0 +1,771 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300, 400, 500, 600, 700&display=swap');
+*{
+    font-family:'Poppins', sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+     /*colors*/
+    --body-color:#efe3ce;
+    --sidebar-color:#faf7f2;
+    --primary-color:#c8b39a;
+    --primary-color-light:#f6f5ff;
+    --text-color:#9a8472;
+    --toggle-color:#ddd;
+
+    /*transition*/
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+ 
+}
+
+body{
+    height:100vh;
+    background:var(--body-color);
+    transition: var(--tran-05);
+}
+
+body.dark{
+    --body-color:#18191a;
+    --sidebar-color:#242526;
+    --primary-color:#3a3b3c;
+    --primary-color-light:#3a3b3c;
+    --text-color:#fff;
+    --toggle-color:#ccc;
+}
+
+/*====Sidebar====*/
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width:250px;
+    background:var(--sidebar-color);
+    padding: 10px 14px;
+    transition: var(--tran-05);
+    z-index: 100;
+}
+
+.sidebar.close{
+    width: 88px
+
+}
+/*====Reuseable CSS====*/
+.sidebar .text{
+    font-size: 16px;
+    font-weight: 500;
+    color:var(--text-color);
+    transition: var(--tran-03);
+    white-space: nowrap;
+    opacity: 1;
+}
+
+.sidebar.close .text{
+    opacity: 0
+}
+.sidebar .image{
+    min-width: 60px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.sidebar li{
+    height: 50px;
+    margin-top: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar li .icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    font-size: 20px;
+}
+
+.sidebar li .icon,
+.sidebar li .text{
+    color:var(--text-color);
+    transition:var(--tran-02);
+}
+
+.sidebar header{
+    position:relative;   
+}
+
+.sidebar .image-text img{
+    width: 40px;
+    border-radius: 6px;
+
+}
+
+.sidebar header .image-text{
+    display:flex;
+    align-items:center;
+
+}
+
+header .image-text .header-text{
+    display:flex;
+    flex-direction:column;
+}
+
+.header-text .name{
+    font-weight: 600;
+}
+
+.header-text .profession{
+
+    margin-top: -2px;
+}
+
+.sidebar header .toggle{
+    position:absolute;
+    top:50%;
+    right:-25px;
+    transform: translateY(-50%) rotate(180deg);
+    height: 25px;
+    width: 25px;
+    background:var(--primary-color);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius: 50%;
+    color:var(--sidebar-color);
+    font-size: 20px;
+    transition: var(--tran-03);
+
+    
+}
+
+.sidebar.close header .toggle{
+    transform: translateY(-50%);
+}
+
+body.dark .sidebar header .toggle{
+    color: var(--text-color);
+    
+}
+.sidebar .search-box{
+    background:var(--primary-color-light);
+    border-radius: 6px;
+    transition: var(--tran-05);
+}
+
+.sidebar .menu{
+    margin-top:35px;
+
+}
+.search-box input{
+    height: 100%;
+    width: 100%;
+    border:none;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 6px;
+    outline:none;
+    background:var(--primary-color-light);
+    transition: var(--tran-05);
+}  
+
+.sidebar li a{
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    transition:var(--tran-04);
+}
+
+.sidebar li a:hover{
+    background:var(--primary-color);
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+    color:var(--sidebar-color);
+}
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text{
+    color: var(--text-color);
+}
+.sidebar .menu-bar{
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-bar .mode{
+    position: relative;
+    border-radius: 6px;
+    background: var(--primary-color-light);
+}
+
+.menu-bar .mode i{
+    position: absolute;
+    transition: var(--tran-03);
+}
+
+.mode .sun-moon{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 60px;  
+}
+
+.menu-bar .mode i.sun{
+    opacity:0;
+}
+
+body.dark .menu-bar .mode i.sun{
+    opacity: 1;
+}
+
+body.dark .menu-bar .mode i.moon{
+    opacity: 0;
+}
+.menu-bar .mode .toggle-switch{
+    position: absolute;
+    right: 0;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    min-width:60px;
+    cursor: pointer;
+    border-radius: 6px;
+    background: var(--primary-color-light);
+    transition: var(--tran-05);
+}
+
+.toggle-switch .switch{
+    position: relative;
+    height:22px;
+    width:44px;
+    border-radius:25px;
+    background:var(--toggle-color);
+}
+
+.switch::before{
+    height:15px;
+    width:15px;
+    background:var(--sidebar-color);
+    content:'';
+    position: absolute;
+    border-radius:50%;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 5px;
+    transition: var(--tran-03);
+}
+
+body.dark .switch::before{
+    left: 25px;
+
+}
+
+.home{
+    position: relative;
+    height:100vh;
+    left: 250px;
+    background: var(--body-color);
+    transition: var(--tran-05);
+}
+ 
+
+.home .text{
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--text-color);
+    padding: 8px 40px;
+}
+.sidebar.close ~ .home{
+    left: 88px;
+    width: calc(100% - 88px);
+}
+/*starthere*/
+
+.home {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Crucial: Prevents the main window from ever scrolling */
+}
+
+/* Header Text adjustment */
+.home .text {
+    flex-shrink: 0; /* Keeps header fixed */
+    padding: 20px 40px 10px 40px; /* Cleaned up spacing */
+}
+
+/* Tabs */
+.home .tabs {
+    display: flex;
+    flex-shrink: 0; /* Keeps tabs fixed */
+    padding: 0 40px; 
+    gap: 40px;       
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.home .tab-btn {
+    padding: 12px 20px; 
+    border: none;
+    background: none;
+    color: #999;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    position: relative;
+    bottom: -1px; 
+}
+
+.home .tab-btn:hover {
+    color: #3d2817;
+}
+
+.tab-btn.active {
+    color: #3d2817;
+    border-bottom-color: #3d2817;
+}
+
+/* Toolbar */
+.home .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+    padding: 0 40px; 
+    flex-shrink: 0; /* Keeps toolbar fixed */
+}
+
+.home .search-bar {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+    background-color: #fff;
+    padding: 12px 20px; 
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    max-width: 500px;
+    width: 100%; 
+}
+
+.home .search-bar i {
+    color: #999;
+    font-size: 14px;
+    flex-shrink: 0; 
+}
+
+.home .search-bar input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    background: transparent;
+    color: #333;
+}
+
+.home .search-bar input::placeholder {
+    color: #bbb;
+}
+
+.home .toolbar-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.home .btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap; 
+}
+
+.btn-filter {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.btn-filter:hover {
+    background-color: #f9f9f9;
+}
+
+.btn-add {
+    background-color: #8a6c5f;
+    color: #fff;
+}
+
+.btn-add:hover {
+    background-color: #2d1f0f;
+}
+
+/* 2. Isolated Scroll Zone for Books Grid */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 25px;
+    padding: 4px 40px 20px 40px; /* Added slight top padding so card hover shadows aren't clipped */
+    
+    flex-grow: 1;       /* Takes up all remaining vertical space dynamically */
+    overflow-y: auto;   /* ONLY this component will scroll if books exceed screen height */
+}
+
+/* Smooth custom scrollbar for the books grid pane */
+.books-grid::-webkit-scrollbar {
+    width: 8px;
+}
+.books-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+.books-grid::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 4px;
+}
+.books-grid::-webkit-scrollbar-thumb:hover {
+    background: #c5bba8;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    color: #999;
+    text-align: center;
+}
+
+.empty-state i {
+    font-size: 48px;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    font-size: 14px;
+}
+
+/* Book Card Structure */
+.book-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; 
+    height: max-content; /* Prevents cards from stretching vertically inside the flex grid */
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.book-cover {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-actions {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 6px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.book-card:hover .book-actions {
+    opacity: 1;
+}
+
+.book-action-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #3d2817;
+    transition: all 0.2s ease;
+}
+
+.book-action-btn:hover {
+    background-color: #fff;
+    transform: scale(1.1);
+}
+
+.book-info {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+.book-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.book-author {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 10px;
+    margin-top: auto; 
+}
+
+.book-progress {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background-color: #e0e0e0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #8b6f47;
+    border-radius: 2px;
+}
+
+.progress-text {
+    font-size: 11px;
+    color: #999;
+    text-align: right;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px; /* Internal containment space */
+    border-top: 1px solid #ddd;
+    flex-shrink: 0; /* Keeps pagination fixed at the very bottom */
+    background: var(--body-color);
+}
+
+.pagination-info {
+    font-size: 13px;
+    color: #999;
+}
+
+.pagination-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.page-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #666;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.page-btn:hover:not(:disabled) {
+    background-color: #f5f2e8;
+    border-color: #3d2817;
+}
+
+.page-btn.active {
+    background-color: #3d2817;
+    color: #fff;
+    border-color: #3d2817;
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Responsive Structural Safeties */
+@media (max-width: 768px) {
+    .home .tabs,
+    .home .toolbar,
+    .books-grid,
+    .pagination {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-bar {
+        max-width: none;
+    }
+
+    .toolbar-actions {
+        width: 100%;
+    }
+
+    .btn {
+        flex-grow: 1;
+        justify-content: center;
+    }
+
+    .books-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 15px;
+    }
+
+    .tabs {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}
+
+/* Grid Layout Container */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+    padding: px 20px;
+}
+
+/* Book Card Card Design */
+.book-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Cover Styling */
+.book-cover {
+    position: relative;
+    height: 280px;
+    background-color: #f0f0f0;
+}
+
+.book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Status Badges */
+.badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #fff;
+}
+.badge-reading { background-color: #3b82f6; } /* Blue */
+.badge-want { background-color: #f59e0b; }    /* Orange */
+.badge-finished { background-color: #10b981; }/* Green */
+
+/* Book Metadata */
+.book-info {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.book-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: #333;
+}
+
+.book-author {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0 0 16px 0;
+}
+
+.book-genre {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0 0 16px 0;
+}
+/* Progress Bars */
+.book-progress {
+    margin-top: auto;
+}
+
+.progress-bar {
+    height: 6px;
+    background-color: #3b82f6; /* Adjust color automatically to match theme if needed */
+    border-radius: 3px;
+    margin-bottom: 6px;
+}
+
+.progress-text {
+    font-size: 0.75rem;
+    color: #888;
+}

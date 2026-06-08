@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="homepage.css">
+    <script type="module" src="./firebasehmpg.js"></script>
+
+</head>
+
+<!--sidebar only-->
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="books.png" alt="logo">
+                </span>
+
+                <div class="text header-text">
+                    <span class="name">PulsePage</span>
+                    <span class="profession">Book Tracker</span>
+                </div>
+            </div>
+            <i class="fa-solid fa-caret-right toggle"></i>
+        </header>
+        <div id="menu" style="visibility: hidden;" class="menu-bar">
+            <div class="menu">
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="homepage.html">
+                            <i class="fa-solid fa-house icon"></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="library.html">
+                            <i class="fa-solid fa-book icon"></i>
+                            <span class="text nav-text">Library</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bottom-content">
+                <li class="nav-link">
+                    <a type="btn" id="logout">
+                        <i class="fa-solid fa-door-open icon"></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class="fa-solid fa-sun icon sun"></i>
+                        <i class="fa-solid fa-moon icon moon"></i>
+                    </div>
+
+                    <span class="mode-text text">Dark Mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="home">
+        <h1>Dashboard</h1>
+        <h3>Welcome to PulsePage Tracker.</h3>
+
+
+        <div class="content-grid">
+            <!-- Currently Reading -->
+            <div class="currently-reading">
+                <div class="section-header">
+                    <i class="fas fa-bookmark"></i>
+                    <h3>Currently Reading</h3>
+                </div>
+                <div class="book-card">
+                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=400" alt="Book Cover">
+                    <div class="book-info">
+                        <h4 id='bookTitle'></h4>
+                        <p id='bookAuthor'></p>
+                        <div class="progress-section">
+                            <label>Reading Progress</label>
+                            <div class="progress-bar">
+                                <div id='progressBar' class="progress-fill" style="width: 67%"></div>
+                            </div>
+                            <span id='progressText' class="progress-text"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Streak -->
+            <div class="current-streak">
+                <h3>Current Streak</h3>
+                <div id="streakCount" class="streak-number">0</div>
+                <p>days in a row!</p>
+                <div class="calendar-grid">
+                    <div id="Mon" class="day completed">M</div>
+                    <div id="Tue" class="day">T</div>
+                    <div id="Wed" class="day">W</div>
+                    <div id="Thu" class="day">T</div>
+                    <div id="Fri" class="day">F</div>
+                    <div id="Sat" class="day">S</div>
+                    <div id="Sun" class="day">S</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reading Overview -->
+        <div class="reading-overview">
+            <h2>Your Reading Overview</h2>
+            <div id="overview" style="visibility: hidden;" class="stats-grid">
+                <a href="library.html" style="text-decoration: none;">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div id="totalBooks" class="stat-number">0</div>
+                        <div class="stat-label">Total Books</div>
+                    </div>
+                </a>
+                <a href="library.html?category=current" style="text-decoration: none;">
+                    <div class="stat-card active">
+                        <div class="stat-icon">
+                            <i class="fas fa-bookmark"></i>
+                        </div>
+                        <div id="currentRead" class="stat-number">0</div>
+                        <div class="stat-label">Currently Reading</div>
+                    </div>
+                </a>
+                <a href="library.html?category=finished" style="text-decoration: none;">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div id="currentFinish" class="stat-number">0</div>
+                        <div class="stat-label">Finished</div>
+                    </div>
+                </a>
+                <a href="library.html?category=want" style="text-decoration: none;">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-list"></i>
+                        </div>
+                        <div id="currentPlan" class="stat-number">0</div>
+                        <div class="stat-label">Plan to Read</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="homepage.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Welcome to PulsePage</title>
+    <link rel="stylesheet" href="homepage.css">
+    <style>
+        /* --- CSS STYLES --- */
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #c9d6ff;
+            background: url(library.jpg) no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: blur(5px);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Toolbar / Navigation Bar */
+        .navbar {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+            .nav-item:hover {
+                color: #3182ce;
+            }
+
+        /* Authentication Buttons */
+        .auth-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            outline: none;
+            border: none;
+            width: 100%;
+            background: #544339;
+            color: white;
+            cursor: pointer;
+            transition: all 0.9s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        /* Hero / Middle Content Section */
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            margin-top: 60px; /* Prevents toolbar from overlapping content */
+            text-align: center;
+        }
+
+        .hero-container {
+            animation: fadeIn 0.8s ease-out;
+            background: #544339;
+            background-image: none;
+            width: 1000px;
+            padding: 1.5rem;
+            margin: 50px auto;
+            border-radius: 15px;
+            box-shadow: 0 20px 35px rgba(0,0,1,0.9);
+        }
+
+        .main-title {
+            font-size: 3rem;
+            color: #f5e9d3;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+        }
+
+        .main-description {
+            font-size: 1.25rem;
+            color: #e0d9cf;
+            line-height: 1.6;
+        }
+
+
+        header {
+            position: relative;
+            gap: 10px;
+            margin-right: 8px;
+        }
+
+        .image-text img {
+            width: 40px;
+            border-radius: 6px;
+            gap: 10px;
+            margin: 8px;
+        }
+
+        header .image-text {
+            display: flex;
+            align-items: center;
+            margin-right: 8px;
+        }
+
+            header .image-text .header-text {
+                display: flex;
+                flex-direction: column;
+            }
+
+        .header-text .name {
+            font-weight: 600;
+        }
+
+        .header-text .profession {
+            margin-top: -2px;
+        }
+
+
+        /* Simple Fade-in Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="books.png" alt="logo">
+                </span>
+
+                <div class="text header-text">
+                    <span class="name">PulsePage</span>
+                    <span class="profession">Book Tracker</span>
+                </div>
+            </div>
+        </header>
+        <div class="nav-links">
+            <a href="mainpage.html" class="nav-item" id="blogLink">Blog</a>
+            <div class="auth-buttons">
+            <a href="index.html" class="btn" style="text-decoration: none; display: inline-block;">SignUp / SignIn</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="hero-container">
+            <h1 class="main-title">Welcome to PulsePage</h1>
+            <p class="main-description">
+               PulsePage is a reading management website that helps users organize and monitor their reading activities efficiently. Users can add books, edit book details, and update their reading progress through an interactive dashboard. The website also includes a statistics section that categorizes books into total books, books that you are planning to read, current reading books, and finished books, allowing users to easily track their reading journey and progress.
+            </p>
+        </div>
+    </main>
+
+    <script>
+        // Adding simple click functionality to the buttons and links
+        document.getElementById('logoLink').addEventListener('click', () => {
+            alert('Redirecting to Home...');
+        });
+
+        document.getElementById('blogLink').addEventListener('click', (e) => {
+            e.preventDefault(); // Prevents page reload
+            alert('Navigating to the Blog section!');
+        });
+
+        document.getElementById('signInBtn').addEventListener('click', () => {
+            alert('Opening Sign In modal/page...');
+        });
+
+        document.getElementById('signUpBtn').addEventListener('click', () => {
+            alert('Opening Sign Up modal/page...');
+        });
+    </script>
+
+</body>
+</html>

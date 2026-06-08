@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register & Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script type="module" src="firebaseauth.js"></script>
+</head>
+
+<body>
+    <!--add by nadiah-->
+    <nav class="navbar">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="books.png" alt="logo">
+                </span>
+
+                <div class="text header-text">
+                    <span class="name">PulsePage</span>
+                    <span class="profession">Book Tracker</span>
+                </div>
+            </div>
+        </header>
+        <div class="nav-links">
+            <a href="mainpage.html" class="nav-item" id="blogLink">Blog</a>
+            <div class="auth-buttons">
+                <a href="index.html" class="btn" style="text-decoration: none; display: inline-block;">SignUp / SignIn</a>
+            </div>
+        </div>
+    </nav>
+    <!--end of adding-->
+    <div class="container" id="signup" style="display:none;">
+        <h1 class="form-title">Register</h1>
+        <form method="post" action="">
+            <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="fName" placeholder="Username" required>
+                <label for="fName">Username</label>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="rEmail" placeholder="Email" required>
+                <label for="rEmail">Email</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="rPassword" placeholder="Password" required>
+                <label for="rPassword">Password</label>
+            </div>
+            <button class="btn" id="submitSignUp">Sign Up</button>
+        </form>
+        <div class="links">
+            <p>Already Have Account ?</p>
+            <button id="signInButton">Sign In</button>
+        </div>
+    </div>
+
+    <div class="container" id="signIn">
+        <h1 class="form-title">Sign In</h1>
+        <form method="post" action="">
+            <div id="signInMessage" class="messageDiv" style="display:none;"></div>
+
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Email" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" required>
+                <label for="password">Password</label>
+            </div>
+            <p class="recover">
+                <a id="recoveryButton">Recover Password</a>
+            </p>
+            <button class="btn" id="submitSignIn">Sign In</button>
+        </form>
+
+        <div class="links">
+            <p>Don't have account yet?</p>
+            <button id="signUpButton">Sign Up</button>
+        </div>
+    </div>
+
+    <div class="container" id="recovery" style="display:none;">
+        <h1 class="form-title">Account Recovery</h1>
+        <form method="post" action="">
+            <div id="recoveryMessage" class="messageDiv" style="display:none;"></div>
+
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="emailRecovery" placeholder="Email" required>
+                <label for="email">Email</label>
+            </div>
+            <button class="btn" id="submitReset">Reset Password</button>
+        </form>
+
+        <div class="links">
+            <p>Still remember your password?</p>
+            <button id="returnButton">Sign In</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

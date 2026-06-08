@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="library.css">
+    <script type="module" src="./firebasehmpg.js"></script>
+
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="bookshelf.png" alt="logo">
+                </span>
+
+                <div class="text header-text">
+                    <span class="name">PulsePage</span>
+                    <span class="profession">Book Tracker</span>
+                </div>
+            </div>
+            <i class="fa-solid fa-caret-right toggle"></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                            <i class="fa-solid fa-magnifying-glass icon"></i>
+                            <input type="text" placeholder="Search...">
+                    </li>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="homepage.html">
+                            <i class="fa-solid fa-house icon"></i>
+                            <span class="text nav-text">Dashboard</span>
+                       </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="library.html">
+                            <i class="fa-solid fa-book icon"></i>
+                            <span class="text nav-text">Library</span>
+                       </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class="fa-solid fa-chart-pie icon"></i>
+                            <span class="text nav-text">Statistics</span>
+                       </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bottom-content">
+                <li class="nav-link">
+                    <a type="btn" id="logout">
+                        <i class="fa-solid fa-door-open icon"></i>
+                        <span class="text nav-text">Logout</span>
+                   </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class="fa-solid fa-sun icon sun"></i>
+                        <i class="fa-solid fa-moon icon moon"></i>
+                    </div>
+
+                    <span class="mode-text text">Dark Mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </nav>
+
+    <section class="home"> 
+        <div class="text">Library</div>
+
+         <!-- Tabs -->
+            <div class="tabs">
+                <a href="#" class="tab-btn active">All Books</a>
+                <a href="#" class="tab-btn">Currently Reading</a>
+                <a href="#" class="tab-btn">Want to Read</a>
+                <a href="#" class="tab-btn">Finished</a>
+            </div>
+
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search books...">
+                </div>
+                <div class="toolbar-actions">
+                    <button class="btn btn-filter">
+                        <i class="fas fa-sliders-h"></i>
+                        Filters
+                    </button>
+                    <a href="addbook.html" class="btn btn-add" style="text-decoration: none;">
+                        <i class="fas fa-plus"></i>
+                        Add Book
+                    </a>
+                </div>
+            </div>
+
+            <!-- Book Grid -->
+            <div class="books-grid">
+                <!-- Books will be added here -->
+                <div class="empty-state">
+                    <i class="fas fa-book"></i>
+                    <p>No books yet. Add your first book!</p>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <span class="pagination-info">Showing 1-0 of 0 books</span>
+                <div class="pagination-controls">
+                    <button class="page-btn" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn" disabled>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+    </section>
+
+
+    <script src="library.js"></script>
+
+</body>
+</html>

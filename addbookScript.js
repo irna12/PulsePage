@@ -1,0 +1,110 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+import { getFirestore, addDoc, doc, getDocs, collection, updateDoc } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+	apiKey: "AIzaSyBrRGZOjI8VFKxtc9lWBmXwIg8mTmMuC3s",
+	authDomain: "miscellanea-8efa2.firebaseapp.com",
+	projectId: "miscellanea-8efa2",
+	storageBucket: "miscellanea-8efa2.firebasestorage.app",
+	messagingSenderId: "822720442429",
+	appId: "1:822720442429:web:744113f0275f4954f0ba54"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth();
+const db = getFirestore();
+
+let userid;
+let bookId = null;
+let docRef;
+let title;
+let author;
+let genre;
+let status;
+let rProgress = 0;
+let bookNotes;
+let star;
+let sDate;
+let eDate;
+let rPage;
+let tPage;
+
+
+
+const addbooks = document.getElementById('addBook');
+if (addbooks != null) {
+	addbooks.addEventListener('click', (event) => {
+		//alert("button was clicked");
+		event.preventDefault();
+		//used for hiding button at page start up and enable once data is display to avoid unintended issue.
+		document.getElementById("addBook").style.visibility = "hidden";
+		document.getElementById("cancel1").style.visibility = "hidden";
+		document.getElementById("cancel2").style.visibility = "hidden";
+
+		const id = document.getElementById('bookId').value;
+		const title = document.getElementById('bookTitle').value;
+		const author = document.getElementById('bookAuthor').value;
+		const genre = document.getElementById('bookGenre').value;
+		const status = document.getElementById('bookStatus').value;
+		const pages = document.getElementById('bookPages').value;
+		const bookNotes = document.getElementById('bookNotes').value;
+
+
+		const auth = getAuth();
+		const db = getFirestore();
+
+		let accIds;
+
+		onAuthStateChanged(auth, (user) => {
+
+			if (user) {
+				const uid = user.uid;
+
+				const bookData = {
+					booksId: id,
+					id: id,
+					accId: uid,
+					title: title,
+					author: author,
+					genre: genre,
+					status: status,
+					totalpages: pages,
+					bookNotes: bookNotes,
+					startDate: '',
+					endDate: '',
+					readPage: '0',
+					star: '0',
+					progress: '0'
+				};
+
+				//alert("Book Added Successfully");
+				//showMessage('Book Added Successfully', 'BookAddMessage');
+				const docRef2 = addDoc(collection(db, "book"), bookData)
+					.then(() => {
+						alert("Book Added Successfully");
+						window.close();
+					})
+
+
+			} else {
+				alert("account not found");
+			}
+		});
+	})
+}
+
+onAuthStateChanged(auth, (user) => {
+
+	if (user) {
+		getbook(user.uid)
+	} else {
+		alert("account not found");
+		//window.location.href = "/index.html";
+	}
+});

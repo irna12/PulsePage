@@ -1,0 +1,353 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Add Book</title> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> 
+    <link rel="stylesheet" href="index.css"> 
+    <script type="module" src="editbook.js"></script> 
+    
+<style>
+        /* Tetapan Asas & Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Kad Utama Form */
+        .add-book-card {
+            background-color: #9a8472; /* Warna krim lembut seperti dalam gambar */
+            width: 100%;
+            max-width: 580px;
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        /* Bahagian Header & Butang Pangkah (X) */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .card-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #3d2817;
+        }
+
+        .close-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #8a6c5b;
+            border: 1px solid #eae6dc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background-color: #eae6dc;
+        }
+
+        /* Penyusun Grid/Layout Form */
+        .form-container {
+            display: flex;
+            gap: 30px;
+        }
+
+        /* Bahagian Kiri: Tempat Muat Naik Kulit Buku */
+        .cover-upload-section {
+            width: 180px;
+            flex-shrink: 0;
+        }
+
+        .cover-box {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            border: 2px dashed #d1c9b8;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #8b7f73;
+            text-align: center;
+            padding: 15px;
+            background-color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .cover-box:hover {
+            background-color: #f1ede2;
+            border-color: #3d2817;
+        }
+
+        .cover-box i {
+            font-size: 32px;
+            margin-bottom: 10px;
+            opacity: 0.7;
+        }
+
+        .cover-box span {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Bahagian Kanan: Input Utama Form */
+        .form-fields {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .input-group label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #3d2817;
+        }
+
+        /* Reka Bentuk Input, Select & Textarea */
+        .form-control {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #e1dacb;
+            border-radius: 10px;
+            background-color: #fff;
+            font-size: 13px;
+            color: #333;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            border-color: #8b6f47;
+        }
+
+        .form-control::placeholder {
+            color: #bfae9c;
+        }
+
+        /* Khusus untuk dropdown select */
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233d2817' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            background-size: 14px;
+            padding-right: 35px;
+        }
+
+        textarea.form-control {
+            resize: none;
+            height: 80px;
+        }
+
+        /* Reka Bentuk Slider Progress */
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progress-val {
+            font-size: 13px;
+            font-weight: 600;
+            color: #3d2817;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #ebdcc5;
+            outline: none;
+            margin-top: 4px;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #d4c1a7;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        /* Bahagian Butang Kawalan */
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .action-btn {
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-cancel {
+            background-color: transparent;
+            color: #333;
+            border: 1px solid #e1dacb;
+        }
+
+        .btn-cancel:hover {
+            background-color: #f1ede2;
+        }
+
+        .btn-submit {
+            background-color: #3d2817; /* Warna coklat gelap kod asal */
+            color: #fff;
+            border: none;
+        }
+
+        .btn-submit:hover {
+            background-color: #26180e;
+        }
+
+        /* Responsif untuk skrin kecil (Telefon) */
+        @media (max-width: 500px) {
+            .form-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .cover-upload-section {
+                width: 150px;
+            }
+            .form-actions {
+                flex-direction: column-reverse;
+            }
+            .action-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="add-book-card">
+        <div class="card-header">
+            <h2>Edit Book</h2>
+            <a id="cancel1" href="library.html" class="close-btn" title="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </a>
+        </div>
+
+        <form id="editBookForm">
+            <div class="form-container">
+                
+                <div class="cover-upload-section">
+                    <label style="display: none;"><input type="file" id="coverInput" accept="image/*"></label>
+                    <div class="cover-box" onclick="document.getElementById('coverInput').click()">
+                        <i class="fa-regular fa-image"></i>
+                        <span>Upload Cover</span>
+                    </div>
+                </div>
+
+                <div class="form-fields">
+
+                    <div class ="input-group">
+                        <label for="bookId">Id</label>
+                        <input type="text" id="bookId" class="form-control" placeholder="Enter book id" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="bookTitle">Title</label>
+                        <input type="text" id="bookTitle" class="form-control" placeholder="Enter book title" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="bookAuthor">Author</label>
+                        <input type="text" id="bookAuthor" class="form-control" placeholder="Enter author name" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="bookGenre">Genre</label>
+                        <select id="bookGenre" class="form-control" required>
+                            <option value="" disabled selected>Select genre</option>
+                            <option value="Fiction">Fiction</option>
+                            <option value="Non-Fiction">Non-Fiction</option>
+                            <option value="Mystery">Mystery</option>
+                            <option value="Sci-Fi">Sci-Fi</option>
+                            <option value="Biography">Biography</option>
+                        </select>
+                    </div>
+
+                    <div id="status" class="input-group">
+                        <label for="bookStatus">Status</label>
+                        <select id="bookStatus" class="form-control">
+                            <option value="Want to Read" selected>Want to Read</option>
+                            <option value="Currently Reading">Currently Reading</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="bookPages">Pages</label>
+                        <input type="number" id="bookPages" class="form-control" placeholder="Enter number of pages"></input>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="bookNotes">Sypnosis (optional)</label>
+                        <textarea id="bookNotes" class="form-control" placeholder="Write sypnosis of the book"></textarea>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <a id="cancel2" href="library.html" class="action-btn btn-cancel">Cancel</a>
+                <a id="editBook" class="action-btn btn-submit">Edit Book</a>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

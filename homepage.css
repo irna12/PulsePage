@@ -13,7 +13,7 @@
     --sidebar-color:#faf7f2;
     --primary-color:#c8b39a;
     --primary-color-light:#f6f5ff;
-    --text-color:#9a8472;
+    --text-color:#2b1f1b;
     --toggle-color:#ddd;
 
     /*transition*/
@@ -32,10 +32,10 @@ body{
 
 body.dark{
     --body-color:#3e2f2b;
-    --sidebar-color:#2b1f1b;
-    --primary-color:#3a3b3c;
+    --sidebar-color:#5c463c;
+    --primary-color:#2b1f1b;
     --primary-color-light:#3a3b3c;
-    --text-color:#fff;
+    --text-color:#e7d4bb;
     --toggle-color:#ccc;
 }
 
@@ -349,11 +349,11 @@ h3{
     gap: 10px;
     margin-bottom: 20px;
     font-size: 14px;
-    color: #666;
+    color: var(--text-color);
 }
 
 .section-header i {
-    color: #3d3d3d;
+    color: var(--text-color);
 }
 
 .book-card {
@@ -379,20 +379,20 @@ h3{
 .book-info h4 {
     font-size: 14px;
     font-weight: 600;
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 5px;
 }
 
 .book-info p {
     font-size: 12px;
-    color: #999;
+    color: var(--text-color);
     margin-bottom: 15px;
 }
 
 .progress-section label {
     display: block;
     font-size: 12px;
-    color: #666;
+    color: var(--text-color);
     margin-bottom: 8px;
     font-weight: 500;
 }
@@ -408,14 +408,14 @@ h3{
 
 .progress-fill {
     height: 100%;
-    background-color: #5a5a5a;
+    background-color: var(--primary-color);
     border-radius: 3px;
     transition: width 0.3s ease;
 }
 
 .progress-text {
     font-size: 12px;
-    color: #666;
+    color: var(--text-color);
     font-weight: 600;
 }
 
@@ -434,7 +434,7 @@ h3{
 
 .current-streak h3 {
     font-size: 14px;
-    color: #666;
+    color: var(--text-color);
     margin-bottom: 15px;
     font-weight: 600;
 }
@@ -442,14 +442,14 @@ h3{
 .streak-number {
     font-size: 60px;
     font-weight: 700;
-    color: #333;
+    color: var(--text-color);
     line-height: 1;
     margin-bottom: 5px;
 }
 
 .current-streak p {
     font-size: 14px;
-    color: #999;
+    color: var(--text-color);
     margin-bottom: 25px;
 }
 
@@ -485,7 +485,7 @@ h3{
 
 .reading-overview h2 {
     font-size: 18px;
-    color: #8a6c5f;
+    color: var(--text-color);
     margin-bottom: 20px;
     font-weight: 600;
     padding: 8px 40px;
@@ -499,8 +499,8 @@ h3{
 }
 
 .stat-card {
-    background-color: var(--text-color);
-    color: var(--sidebar-color);
+    background-color: var(--primary-color);
+    color: var(--text-color);
     padding: 8px 30px;
     border-radius: 12px;
     text-align: center;

@@ -12,7 +12,7 @@
     --sidebar-color:#faf7f2;
     --primary-color:#c8b39a;
     --primary-color-light:#f6f5ff;
-    --text-color:#9a8472;
+    --text-color:#2b1f1b;
     --toggle-color:#ddd;
 
     /*transition*/
@@ -30,11 +30,11 @@ body{
 }
 
 body.dark{
-    --body-color:#18191a;
-    --sidebar-color:#242526;
-    --primary-color:#3a3b3c;
-    --primary-color-light:#3a3b3c;
-    --text-color:#fff;
+    --body-color:#3e2f2b;
+    --sidebar-color:#5c463c;
+    --primary-color:#2b1f1b;
+    --primary-color-light:#8c6f5a;
+    --text-color:#e7d4bb;
     --toggle-color:#ccc;
 }
 
@@ -414,12 +414,12 @@ body.dark .switch::before{
 }
 
 .btn-add {
-    background-color: #8a6c5f;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--text-color);
 }
 
 .btn-add:hover {
-    background-color: #2d1f0f;
+    background-color: var(--primary-color-light);
 }
 
 /* 2. Isolated Scroll Zone for Books Grid */
@@ -441,11 +441,11 @@ body.dark .switch::before{
     background: transparent;
 }
 .books-grid::-webkit-scrollbar-thumb {
-    background: #ddd;
+    background: var(--primary-color);
     border-radius: 4px;
 }
 .books-grid::-webkit-scrollbar-thumb:hover {
-    background: #c5bba8;
+    background: var(--primary-color-light);
 }
 
 .empty-state {
@@ -455,7 +455,7 @@ body.dark .switch::before{
     align-items: center;
     justify-content: center;
     padding: 60px 20px;
-    color: #999;
+    color: var(--text-color);
     text-align: center;
 }
 
@@ -471,7 +471,7 @@ body.dark .switch::before{
 
 /* Book Card Structure */
 .book-card {
-    background-color: #fff;
+    background-color: var(--primary-color);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
@@ -484,7 +484,7 @@ body.dark .switch::before{
 
 .book-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 6px 12px rgba(243, 224, 224, 0.12);
 }
 
 .book-cover {
@@ -529,7 +529,7 @@ body.dark .switch::before{
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    color: #3d2817;
+    color: var(--primary-color);
     transition: all 0.2s ease;
 }
 
@@ -606,7 +606,7 @@ body.dark .switch::before{
     display: flex;
     gap: 8px;
 }
-
+/*
 .page-btn {
     width: 32px;
     height: 32px;
@@ -635,7 +635,7 @@ body.dark .switch::before{
     opacity: 0.5;
     cursor: not-allowed;
 }
-
+*/
 /* Responsive Structural Safeties */
 @media (max-width: 768px) {
     .home .tabs,
@@ -685,7 +685,7 @@ body.dark .switch::before{
 
 /* Book Card Card Design */
 .book-card {
-    background: #fff;
+    background: var(--primary-color);
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     overflow: hidden;
@@ -739,18 +739,18 @@ body.dark .switch::before{
     font-size: 1rem;
     font-weight: 600;
     margin: 0 0 4px 0;
-    color: #333;
+    color: var(--text-color);
 }
 
 .book-author {
     font-size: 0.85rem;
-    color: #666;
+    color: var(--text-color);
     margin: 0 0 16px 0;
 }
 
 .book-genre {
     font-size: 0.85rem;
-    color: #666;
+    color: var(--text-color);
     margin: 0 0 16px 0;
 }
 /* Progress Bars */
@@ -760,12 +760,12 @@ body.dark .switch::before{
 
 .progress-bar {
     height: 6px;
-    background-color: #3b82f6; /* Adjust color automatically to match theme if needed */
+    background-color: var(--primary-color-light); /* Adjust color automatically to match theme if needed */
     border-radius: 3px;
     margin-bottom: 6px;
 }
 
 .progress-text {
     font-size: 0.75rem;
-    color: #888;
+    color: var(--text-color);
 }
